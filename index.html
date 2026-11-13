@@ -1,0 +1,1120 @@
+<!doctype html>
+<!--
+THESIS: Language becomes memorable when a learner can move from noticing to understanding to making; this workshop refuses the passive lesson-page.
+OWN-WORLD: Cobalt, vermilion, citrus yellow, and mint enamel; rounded mechanical parts, crisp ruled work surfaces, and sturdy system sans.
+STORY: A Grade 5 learner watches an original animated explanation, tries one small language task, and sees progress stay on this device.
+FIRST VIEWPORT: A compact header and one-time school notice lead into a large working language machine beside the active lesson and its next action.
+FORM: The language-machine exhibit, direction 7 of 7; a lesson workbench with unit drawers and task slips; seed e3ccd809.
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f8fc">
+  <meta name="description" content="五年级上册语文原创互动学习样板：看微课、做练习、安排每天的学习。">
+  <title>语文机关展台 · 五年级上册</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5f8fc;
+      --surface: #ffffff;
+      --exhibit-blue: #e6effc;
+      --ink: #17243b;
+      --muted: #52657e;
+      --line: #cbd6e3;
+      --blue: #2058d6;
+      --blue-deep: #173d9d;
+      --blue-soft: #e4edff;
+      --red: #c53b2c;
+      --yellow: #f5c544;
+      --mint: #178363;
+      --notice-border: #e1aa48;
+      --notice-paper: #fff3d4;
+      --notice-ink: #4a3210;
+      --shadow: 0 9px 22px rgb(23 36 59 / 12%);
+      --radius: 22px;
+      font-family: "Segoe UI", "Microsoft YaHei", "PingFang SC", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    button, input { font: inherit; }
+    button { color: inherit; }
+    button:focus-visible, input:focus-visible, a:focus-visible {
+      outline: 3px solid var(--blue-deep);
+      outline-offset: 3px;
+    }
+
+    .page { width: min(1440px, 100%); margin: 0 auto; padding: 22px 34px 60px; }
+    .masthead { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 20px; }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .brand-mark { width: 48px; height: 48px; flex: 0 0 auto; }
+    .brand h1 { margin: 0; font-size: 19px; line-height: 1.2; letter-spacing: -.025em; }
+    .brand p { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+    .top-actions { display: flex; align-items: center; gap: 10px; }
+    .edition { padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--muted); font-size: 12px; white-space: nowrap; }
+    .progress-chip { display: flex; align-items: center; gap: 8px; padding: 7px 11px; border-radius: 999px; background: var(--blue-soft); color: var(--blue-deep); font-size: 12px; font-weight: 750; white-space: nowrap; }
+    .progress-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--blue); }
+
+    .notice {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      align-items: start;
+      margin: 0 0 24px;
+      padding: 13px 17px;
+      border: 1px solid var(--notice-border);
+      border-radius: 15px;
+      background: var(--notice-paper);
+      color: var(--notice-ink);
+    }
+    .notice-mark { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 50%; background: var(--yellow); font-weight: 900; }
+    .notice h2 { margin: 0 0 2px; font-size: 14px; }
+    .notice p { margin: 0; font-size: 13px; }
+    .notice.is-ended { border-color: var(--line); background: var(--paper); color: var(--muted); }
+    .notice.is-ended .notice-mark { background: var(--line); }
+
+    .workbench {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(390px, .95fr);
+      min-height: 490px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .machine-side {
+      position: relative;
+      display: flex;
+      min-height: 490px;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      padding: 28px 30px 24px;
+      background-color: var(--exhibit-blue);
+    }
+    .machine-side::after {
+      position: absolute;
+      right: -80px;
+      bottom: -180px;
+      width: 370px;
+      height: 370px;
+      border: 1px solid var(--blue);
+      border-radius: 50%;
+      content: "";
+      opacity: .2;
+      pointer-events: none;
+    }
+    .machine-heading { position: relative; z-index: 1; max-width: 390px; }
+    .machine-heading h2 { margin: 0; max-width: 12ch; font-size: clamp(29px, 3vw, 43px); line-height: 1.1; letter-spacing: -.045em; }
+    .machine-heading p { max-width: 36ch; margin: 10px 0 0; color: var(--muted); font-size: 14px; }
+    .machine-art {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 555px);
+      margin: -4px auto -4px;
+      overflow: visible;
+    }
+    .gear { transform-box: fill-box; transform-origin: center; }
+    .gear-a { animation: turn-clockwise 18s linear infinite; }
+    .gear-b { animation: turn-counter 13s linear infinite; }
+    .lever { transform-box: fill-box; transform-origin: 50% 88%; transition: transform 450ms cubic-bezier(.16, 1, .3, 1); }
+    .machine-art[data-stage="1"] .lever { transform: rotate(12deg); }
+    .machine-art[data-stage="2"] .lever { transform: rotate(-12deg); }
+    .machine-pulse { animation: pulse 2.4s ease-out infinite; }
+    .machine-caption { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--blue-deep); font-size: 12px; }
+    .machine-caption strong { color: var(--blue-deep); }
+    .bolt-row { display: flex; gap: 6px; }
+    .bolt-row i { width: 7px; height: 7px; border: 1px solid var(--line); border-radius: 50%; background: var(--surface); }
+    .machine-controls { display: flex; gap: 8px; margin-top: 12px; }
+    .stage-button {
+      min-width: 0;
+      flex: 1;
+      padding: 9px 8px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: var(--surface);
+      color: var(--blue-deep);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      transition: background 160ms ease, transform 160ms ease;
+    }
+    .stage-button:hover { transform: translateY(-2px); background: white; }
+    .stage-button[aria-pressed="true"] { border-color: var(--blue); background: var(--blue); color: white; }
+
+    .lesson-side { display: flex; flex-direction: column; padding: 30px 32px 26px; }
+    .lesson-topline { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: var(--muted); font-size: 12px; }
+    .unit-mark { display: inline-flex; align-items: center; gap: 7px; font-weight: 750; }
+    .unit-mark::before { width: 10px; height: 10px; border: 2px solid var(--blue); border-radius: 3px; content: ""; transform: rotate(45deg); }
+    .lesson-count { color: var(--muted); }
+    .lesson-side h2 { margin: 20px 0 8px; font-size: clamp(25px, 2.6vw, 34px); line-height: 1.18; letter-spacing: -.04em; }
+    .lesson-objective { margin: 0; color: var(--muted); font-size: 14px; }
+    .lesson-rule { height: 1px; margin: 20px 0; background: var(--line); }
+    .lesson-step-label { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; color: var(--blue-deep); font-size: 12px; font-weight: 800; }
+    .step-index { color: var(--muted); font-weight: 650; }
+    .lesson-script {
+      min-height: 118px;
+      margin: 0;
+      padding: 17px 18px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.75;
+    }
+    .lesson-script em { color: var(--red); font-style: normal; font-weight: 750; }
+    .lesson-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; margin-top: 15px; }
+    .primary-button, .quiet-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 10px 15px;
+      border: 0;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 800;
+      transition: transform 160ms ease, background 160ms ease;
+    }
+    .primary-button { background: var(--blue); color: var(--surface); box-shadow: 0 4px 0 var(--blue-deep); }
+    .primary-button:hover { transform: translateY(-2px); background: var(--blue-deep); }
+    .primary-button:active { transform: translateY(2px); box-shadow: none; }
+    .quiet-button { border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+    .quiet-button:hover { background: var(--paper); }
+    .quiet-button:disabled { border-color: var(--line); background: var(--paper); color: var(--muted); cursor: not-allowed; }
+    .lesson-status { min-height: 21px; margin: 8px 0 0; color: var(--muted); font-size: 12px; }
+    .lesson-status.is-playing { color: var(--blue-deep); font-weight: 750; }
+    .lesson-status.is-done { color: var(--mint); font-weight: 750; }
+
+    .unit-drawer {
+      margin-top: 28px;
+      padding: 0;
+      border: 0;
+    }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 18px; margin-bottom: 12px; }
+    .section-heading h2 { margin: 0; font-size: 22px; letter-spacing: -.03em; }
+    .section-heading p { margin: 0; color: var(--muted); font-size: 13px; }
+    .unit-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 15px; background: var(--surface); }
+    .unit-button {
+      display: flex;
+      min-height: 84px;
+      align-items: center;
+      gap: 11px;
+      padding: 14px 16px;
+      border: 0;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      cursor: pointer;
+      text-align: left;
+      transition: background 160ms ease;
+    }
+    .unit-button:nth-child(4n) { border-right: 0; }
+    .unit-button:nth-last-child(-n + 4) { border-bottom: 0; }
+    .unit-button:hover { background: var(--paper); }
+    .unit-button[aria-current="true"] { background: var(--blue-soft); }
+    .unit-number { display: grid; width: 34px; height: 34px; flex: 0 0 auto; place-items: center; border: 1px solid var(--line); border-radius: 11px; background: var(--surface); color: var(--blue-deep); font-size: 13px; font-weight: 850; }
+    .unit-button[aria-current="true"] .unit-number { border-color: var(--blue); background: var(--blue); color: white; }
+    .unit-title { display: block; font-size: 13px; font-weight: 800; }
+    .unit-subtitle { display: block; margin-top: 3px; color: var(--muted); font-size: 11px; line-height: 1.35; }
+
+    .practice-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(285px, .62fr); gap: 22px; margin-top: 36px; align-items: start; }
+    .practice-panel {
+      min-height: 260px;
+      padding: 23px 26px;
+      border-radius: 20px;
+      background: var(--blue-deep);
+      color: var(--surface);
+    }
+    .practice-panel h2 { max-width: 38ch; margin: 0 0 8px; font-size: 22px; line-height: 1.3; }
+    .practice-panel > p { margin: 0; color: var(--surface); font-size: 13px; }
+    .answer-list { display: grid; gap: 8px; margin: 17px 0 0; padding: 0; border: 0; }
+    .answer-list legend { margin-bottom: 8px; color: var(--surface); font-size: 12px; font-weight: 750; }
+    .answer-option {
+      display: flex;
+      align-items: start;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: var(--blue);
+      color: var(--surface);
+      cursor: pointer;
+      font-size: 13px;
+      line-height: 1.5;
+      transition: background 150ms ease, border-color 150ms ease;
+    }
+    .answer-option:hover { border-color: var(--surface); background: var(--blue-deep); }
+    .answer-option[aria-pressed="true"] { border-color: var(--yellow); background: var(--blue-deep); box-shadow: inset 0 0 0 1px var(--yellow); }
+    .answer-letter { display: grid; width: 23px; height: 23px; flex: 0 0 auto; place-items: center; border-radius: 7px; background: var(--surface); color: var(--blue-deep); font-size: 11px; font-weight: 900; }
+    .check-answer { margin-top: 13px; border-color: var(--yellow); background: var(--yellow); box-shadow: 0 4px 0 var(--notice-ink); color: var(--notice-ink); }
+    .check-answer:hover { background: var(--yellow); }
+    .answer-feedback { min-height: 24px; margin: 11px 0 0; color: var(--surface); font-size: 13px; }
+    .answer-feedback.correct { color: var(--yellow); font-weight: 750; }
+    .answer-feedback.retry { color: var(--yellow); }
+
+    .daily-panel {
+      padding: 22px 22px 19px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: white;
+    }
+    .daily-panel h2 { margin: 0; font-size: 21px; letter-spacing: -.03em; }
+    .daily-date { margin: 3px 0 16px; color: var(--muted); font-size: 12px; }
+    .task-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+    .task-item { display: flex; align-items: start; gap: 10px; padding: 11px 0; border-top: 1px solid var(--line); }
+    .task-item input { width: 19px; height: 19px; flex: 0 0 auto; margin: 2px 0 0; accent-color: var(--blue); cursor: pointer; }
+    .task-copy { display: block; font-size: 13px; font-weight: 700; }
+    .task-copy small { display: block; margin-top: 2px; color: var(--muted); font-size: 11px; font-weight: 500; }
+    .task-item.is-checked .task-copy { color: var(--muted); text-decoration: line-through; }
+    .daily-footer { margin: 11px 0 0; color: var(--muted); font-size: 11px; }
+    .storage-status { min-height: 17px; margin: 8px 0 0; color: var(--muted); font-size: 11px; }
+    .storage-status.error { color: var(--red); }
+
+    .week-strip { margin-top: 35px; }
+    .week-strip h2 { margin: 0; font-size: 22px; letter-spacing: -.03em; }
+    .week-strip > p { margin: 5px 0 14px; color: var(--muted); font-size: 13px; }
+    .week-plan { display: grid; grid-template-columns: repeat(7, minmax(120px, 1fr)); overflow-x: auto; border: 1px solid var(--line); border-radius: 15px; background: white; }
+    .day-plan { min-height: 110px; padding: 15px 13px; border-right: 1px solid var(--line); }
+    .day-plan:last-child { border-right: 0; }
+    .day-plan strong { display: block; color: var(--blue-deep); font-size: 12px; }
+    .day-plan span { display: block; margin-top: 8px; color: var(--ink); font-size: 12px; line-height: 1.5; }
+    .day-plan.research-day { background: var(--notice-paper); }
+    .day-plan.research-day span { color: var(--notice-ink); }
+    .notice-footnote { margin: 10px 0 0; color: var(--muted); font-size: 11px; }
+
+    .credits {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 24px;
+      margin-top: 36px;
+      padding-top: 17px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .credits p { max-width: 76ch; margin: 0; }
+    .credits strong { color: var(--ink); }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; clip-path: inset(50%); }
+
+    @keyframes turn-clockwise { to { transform: rotate(360deg); } }
+    @keyframes turn-counter { to { transform: rotate(-360deg); } }
+    @keyframes pulse { 0%, 100% { opacity: .48; } 50% { opacity: 1; } }
+
+    @media (max-width: 980px) {
+      .page { padding: 18px 22px 48px; }
+      .workbench { grid-template-columns: 1fr; }
+      .machine-side { min-height: 420px; }
+      .machine-art { width: min(88%, 500px); }
+      .lesson-side { padding: 25px 27px 24px; }
+      .unit-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .unit-button:nth-child(4n) { border-right: 1px solid var(--line); }
+      .unit-button:nth-child(2n) { border-right: 0; }
+      .unit-button:nth-last-child(-n + 4) { border-bottom: 1px solid var(--line); }
+      .unit-button:nth-last-child(-n + 2) { border-bottom: 0; }
+      .practice-section { grid-template-columns: 1fr; }
+      .week-plan { grid-template-columns: repeat(7, minmax(140px, 1fr)); }
+    }
+
+    @media (max-width: 600px) {
+      .page { padding: 13px 14px 36px; }
+      .masthead { align-items: start; margin-bottom: 14px; }
+      .brand-mark { width: 42px; height: 42px; }
+      .brand h1 { font-size: 16px; }
+      .brand p { max-width: 23ch; font-size: 11px; }
+      .top-actions { align-items: end; flex-direction: column; gap: 6px; }
+      .edition, .progress-chip { padding: 5px 8px; font-size: 10px; }
+      .notice { gap: 9px; margin-bottom: 16px; padding: 11px 12px; }
+      .notice h2 { font-size: 13px; }
+      .notice p { font-size: 12px; line-height: 1.55; }
+      .workbench { border-radius: 22px; }
+      .machine-side { min-height: 350px; padding: 22px 19px 17px; }
+      .machine-heading h2 { max-width: 14ch; font-size: 31px; }
+      .machine-heading p { margin-top: 6px; font-size: 12px; }
+      .machine-art { width: 100%; max-height: 215px; }
+      .machine-caption { font-size: 10px; }
+      .machine-controls { gap: 5px; }
+      .stage-button { padding: 8px 5px; font-size: 10px; }
+      .lesson-side { padding: 22px 19px; }
+      .lesson-side h2 { margin-top: 15px; font-size: 27px; }
+      .lesson-script { min-height: 108px; padding: 13px 14px; font-size: 14px; }
+      .primary-button, .quiet-button { min-height: 42px; padding: 9px 12px; font-size: 13px; }
+      .unit-drawer { margin-top: 23px; }
+      .section-heading { align-items: start; flex-direction: column; gap: 3px; }
+      .section-heading h2, .week-strip h2 { font-size: 20px; }
+      .unit-list { border-radius: 15px; }
+      .unit-button { min-height: 75px; gap: 8px; padding: 10px 9px; }
+      .unit-number { width: 30px; height: 30px; border-radius: 11px; font-size: 12px; }
+      .unit-title { font-size: 12px; }
+      .unit-subtitle { font-size: 10px; }
+      .practice-section { gap: 15px; margin-top: 26px; }
+      .practice-panel { padding: 19px 16px; border-radius: 15px; }
+      .practice-panel h2 { font-size: 19px; }
+      .answer-option { font-size: 12px; }
+      .daily-panel { padding: 18px 16px; border-radius: 15px; }
+      .week-strip { margin-top: 27px; }
+      .week-plan { grid-template-columns: repeat(7, minmax(135px, 1fr)); }
+      .day-plan { min-height: 101px; padding: 12px 10px; }
+      .credits { flex-direction: column; gap: 8px; margin-top: 27px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="masthead">
+      <div class="brand">
+        <svg class="brand-mark" viewBox="0 0 48 48" role="img" aria-label="语文机关展台标志">
+          <rect x="2" y="2" width="44" height="44" rx="14" fill="var(--blue)"/>
+          <path d="M12 16h24M16 24h16M12 32h24" stroke="var(--surface)" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="24" cy="24" r="4" fill="var(--yellow)"/>
+        </svg>
+        <div>
+          <h1>语文机关展台</h1>
+          <p>五年级上册 · 原创互动学习</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <span class="edition">湖南学习情境 · 统编版（人教版）</span>
+        <span class="progress-chip"><i class="progress-dot" aria-hidden="true"></i><span id="progressSummary">已完成 0 个任务</span></span>
+      </div>
+    </header>
+
+    <aside class="notice" id="researchNotice" aria-labelledby="noticeTitle">
+      <span class="notice-mark" aria-hidden="true">!</span>
+      <div>
+        <h2 id="noticeTitle">一次性调研提醒 · 2026年11月16日（周一）</h2>
+        <p>语文 8:30–10:00，数学 10:30–12:00。调研后正常上课，按正常时间放学。</p>
+      </div>
+    </aside>
+
+    <main>
+      <section class="workbench" aria-label="互动微课工作台">
+        <div class="machine-side">
+          <div class="machine-heading">
+            <h2>把一句话，<br>拧出新发现。</h2>
+            <p>看一看，想一想，再动手试试。每个小机关，都能帮你把想法说得更清楚。</p>
+          </div>
+
+          <svg class="machine-art" id="machineArt" data-stage="0" viewBox="0 0 560 310" role="img" aria-labelledby="machineTitle machineDescription">
+            <title id="machineTitle">原创语文机关动画</title>
+            <desc id="machineDescription">齿轮、观察窗和表达杆组成一台把观察变成表达的学习装置。</desc>
+            <ellipse cx="278" cy="281" rx="207" ry="17" fill="var(--line)" opacity=".42"/>
+            <path d="M77 243h405l-24 34H100z" fill="var(--blue)" stroke="var(--blue-deep)" stroke-width="5"/>
+            <path d="M111 242V125q0-15 15-15h306q15 0 15 15v117" fill="var(--surface)" stroke="var(--blue-deep)" stroke-width="5"/>
+            <path d="M142 138h127v74H142z" fill="var(--exhibit-blue)" stroke="var(--line)" stroke-width="3"/>
+            <path d="M291 138h125v74H291z" fill="var(--notice-paper)" stroke="var(--notice-border)" stroke-width="3"/>
+            <path d="M157 191c16-34 34-34 51 0m-53-16h74" fill="none" stroke="var(--blue)" stroke-width="5" stroke-linecap="round"/>
+            <circle class="machine-pulse" cx="197" cy="161" r="9" fill="var(--red)"/>
+            <text x="169" y="229" fill="var(--blue-deep)" font-size="12" font-weight="700">观察窗</text>
+            <path d="M307 190l18-25 16 15 14-22 35 33" fill="none" stroke="var(--mint)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="323" y="229" fill="var(--notice-ink)" font-size="12" font-weight="700">发现窗</text>
+            <g class="gear gear-a">
+              <circle cx="281" cy="172" r="31" fill="var(--yellow)" stroke="var(--notice-ink)" stroke-width="4" stroke-dasharray="9 5"/>
+              <circle cx="281" cy="172" r="11" fill="var(--surface)" stroke="var(--notice-ink)" stroke-width="4"/>
+            </g>
+            <g class="gear gear-b">
+              <circle cx="246" cy="219" r="20" fill="var(--red)" stroke="var(--blue-deep)" stroke-width="4" stroke-dasharray="7 4"/>
+              <circle cx="246" cy="219" r="7" fill="var(--surface)" stroke="var(--blue-deep)" stroke-width="3"/>
+            </g>
+            <path d="M278 203v22" stroke="var(--blue-deep)" stroke-width="6" stroke-linecap="round"/>
+            <g class="lever">
+              <path d="M437 222l21-78" stroke="var(--blue-deep)" stroke-width="11" stroke-linecap="round"/>
+              <circle cx="460" cy="141" r="13" fill="var(--red)" stroke="var(--blue-deep)" stroke-width="4"/>
+            </g>
+            <path d="M403 232h66" stroke="var(--blue-deep)" stroke-width="7" stroke-linecap="round"/>
+            <circle cx="130" cy="124" r="6" fill="var(--yellow)" stroke="var(--blue-deep)" stroke-width="2"/>
+            <circle cx="431" cy="124" r="6" fill="var(--yellow)" stroke="var(--blue-deep)" stroke-width="2"/>
+            <rect x="203" y="76" width="153" height="27" rx="13" fill="var(--blue-deep)"/>
+            <text x="279.5" y="94" fill="var(--surface)" text-anchor="middle" font-size="12" font-weight="800" letter-spacing="2">想法加工器</text>
+          </svg>
+
+          <div>
+            <div class="machine-caption">
+              <span><strong>转动机关</strong>，切换这节课的学习步骤</span>
+              <span class="bolt-row" aria-hidden="true"><i></i><i></i><i></i></span>
+            </div>
+            <div class="machine-controls" id="stageControls" aria-label="切换微课步骤"></div>
+          </div>
+        </div>
+
+        <article class="lesson-side" aria-labelledby="lessonTitle">
+          <div class="lesson-topline">
+            <span class="unit-mark" id="unitMark">单元一 · 留心细节</span>
+            <span class="lesson-count" id="lessonCount">微课 1 / 3</span>
+          </div>
+          <h2 id="lessonTitle">让细节自己说话</h2>
+          <p class="lesson-objective" id="lessonObjective"></p>
+          <div class="lesson-rule" aria-hidden="true"></div>
+          <div class="lesson-step-label">
+            <span id="stepTitle">观察 · 找到细节</span>
+            <span class="step-index" id="stepIndex">第 1 步 / 3</span>
+          </div>
+          <p class="lesson-script" id="lessonScript" aria-live="polite"></p>
+          <div class="lesson-controls">
+            <button class="primary-button" id="playLesson" type="button">
+              <span aria-hidden="true">▶</span><span id="playLabel">播放微课动画</span>
+            </button>
+            <button class="quiet-button" id="nextStep" type="button">下一步 <span aria-hidden="true">→</span></button>
+            <button class="quiet-button" id="previousLesson" type="button" aria-label="上一节微课">上一节</button>
+            <button class="quiet-button" id="nextLesson" type="button" aria-label="下一节微课">下一节</button>
+          </div>
+          <p class="lesson-status" id="lessonStatus" aria-live="polite">原创字幕微课 · 不含外部视频</p>
+        </article>
+      </section>
+
+      <section class="unit-drawer" aria-labelledby="unitsHeading">
+        <div class="section-heading">
+          <h2 id="unitsHeading">选择一个语文机关</h2>
+          <p>湖南学校学习情境 · 8个主题 · 每主题3节原创微课</p>
+        </div>
+        <nav class="unit-list" id="unitList" aria-label="五年级上册学习主题"></nav>
+      </section>
+
+      <section class="practice-section" aria-label="练习与每日任务">
+        <article class="practice-panel" aria-labelledby="practiceTitle">
+          <h2 id="practiceTitle">现在试一试</h2>
+          <p id="practiceIntro"></p>
+          <fieldset class="answer-list" id="answerList">
+            <legend>选一个你认为最合适的做法</legend>
+          </fieldset>
+          <button class="primary-button check-answer" id="checkAnswer" type="button">检查我的想法 <span aria-hidden="true">✓</span></button>
+          <p class="answer-feedback" id="answerFeedback" aria-live="polite"></p>
+        </article>
+
+        <aside class="daily-panel" aria-labelledby="dailyTitle">
+          <h2 id="dailyTitle">今天的小任务</h2>
+          <p class="daily-date" id="dailyDate"></p>
+          <ul class="task-list" id="taskList"></ul>
+          <p class="daily-footer">按自己的节奏完成就好，不需要一次做完全部单元。</p>
+          <p class="storage-status" id="storageStatus" aria-live="polite">学习勾选只保存在这台设备的浏览器里。</p>
+        </aside>
+      </section>
+
+      <section class="week-strip" aria-labelledby="weekHeading">
+        <h2 id="weekHeading">本周短期安排 · 11月13日—19日</h2>
+        <p>每天一小步：微课、练习、自己说一遍。调研安排是学校临时通知，不是固定课程表。</p>
+        <div class="week-plan" aria-label="一周学习计划">
+          <div class="day-plan"><strong>周五 · 11月13日</strong><span>挑一节微课，完成一个观察练习。</span></div>
+          <div class="day-plan"><strong>周六 · 11月14日</strong><span>复习“找细节”，写两句自己的发现。</span></div>
+          <div class="day-plan"><strong>周日 · 11月15日</strong><span>轻松回看语文笔记，整理文具。</span></div>
+          <div class="day-plan research-day"><strong>周一 · 11月16日</strong><span>学校调研：语文 8:30–10:00；数学 10:30–12:00。之后正常上课，正常时间放学。</span></div>
+          <div class="day-plan"><strong>周二 · 11月17日</strong><span>选一节新微课，试着讲给家人听。</span></div>
+          <div class="day-plan"><strong>周三 · 11月18日</strong><span>完成一个小练习，再订正一次。</span></div>
+          <div class="day-plan"><strong>周四 · 11月19日</strong><span>挑一件喜欢的事物，写下三个特点。</span></div>
+        </div>
+        <p class="notice-footnote">日期对应本次短期复习提示；11月16日之后调研提醒会标记为已结束。</p>
+      </section>
+    </main>
+
+    <footer class="credits">
+      <p><strong>原创说明：</strong>这里的讲解、例句、练习、脚本与插画均为本项目原创；单元主题仅作学习导航，不转载教材正文、他人教案、插画或视频。动画为页面内原创图形与字幕演示。</p>
+      <p>学习进度保存在本机浏览器 · 不会上传</p>
+    </footer>
+  </div>
+
+  <script>
+    const units = [
+      {
+        title: "留心细节", subtitle: "把观察变成表达",
+        lessons: [
+          {
+            title: "让细节自己说话", objective: "用看得见、听得到的小线索，让描写变得具体。",
+            steps: [
+              ["观察 · 找到细节", "别急着说“它很美”。先看一看：你注意到的颜色、形状或动作是什么？"],
+              ["思考 · 放大线索", "选一个最特别的地方。比如风吹过树叶时，叶片翻出浅浅的绿。"],
+              ["表达 · 写出画面", "把细节和动作放在一句话里：让读者像你一样，真的看见那个瞬间。"]
+            ],
+            question: "想把“花很漂亮”写得更具体，哪一步最有帮助？",
+            options: ["加上花瓣颜色和微风里的动作", "重复写三遍“特别漂亮”", "只写“我很喜欢”", "换一个更长的句号"],
+            answer: 0, feedback: "颜色和动作能让读者看见画面。试着再加一个你亲眼留意到的细节。"
+          },
+          {
+            title: "同一景物，换个角度", objective: "比较观察位置，发现表达可以有不同选择。",
+            steps: [
+              ["观察 · 站在哪里", "近看能发现纹理，远看能看出形状。先说清楚观察者的位置。"],
+              ["思考 · 选一个焦点", "从景物里挑一处最想介绍的地方，其他信息先放一放。"],
+              ["表达 · 对照变化", "试着把“近处看到的”和“远处看到的”各说一句，比较哪里不一样。"]
+            ],
+            question: "写校园里的大树，怎样比较近看与远看的不同？",
+            options: ["近看叶脉，远看树冠轮廓", "只写树有多高", "把两种观察都删掉", "只说树的名字"],
+            answer: 0, feedback: "好发现！观察位置变了，能注意到的信息也会改变。"
+          },
+          {
+            title: "用一件小事写心意", objective: "从熟悉的事物里挑线索，写出它为什么重要。",
+            steps: [
+              ["观察 · 选一件物品", "挑一件常用、常见或常想起的东西，看看它有什么特别之处。"],
+              ["思考 · 找到关联", "想一想它陪你经历过什么，或者让你想起谁。"],
+              ["表达 · 说清心意", "先写特点，再用一件小事解释喜欢的原因，不用只写“我很爱它”。"]
+            ],
+            question: "介绍一件珍爱的物品，哪种材料最能让理由可信？",
+            options: ["外形特点加上一段真实经历", "只写“它是最好的”", "只写价格", "抄写一段说明书"],
+            answer: 0, feedback: "特点和经历连在一起，读者更容易明白它对你的意义。"
+          }
+        ]
+      },
+      {
+        title: "读得快，想得准", subtitle: "按目的寻找信息",
+        lessons: [
+          {
+            title: "先带着问题读", objective: "读之前明确目的，让注意力知道要找什么。",
+            steps: [
+              ["观察 · 看清问题", "先把要回答的问题读一遍，圈出最关键的词。"],
+              ["思考 · 预测位置", "想一想答案可能藏在哪类内容里：时间、地点、原因，还是结果？"],
+              ["表达 · 对照原文", "找到线索后回到句子里核对，别只凭印象作答。"]
+            ],
+            question: "题目问“活动在几点开始”，阅读时先找哪类线索？",
+            options: ["表示时间的词和数字", "人物穿什么颜色", "文章里最长的句子", "最后一个标点"],
+            answer: 0, feedback: "先找时间线索，再回到上下文核对，会更快也更准确。"
+          },
+          {
+            title: "一句话抓住重点", objective: "把段落里重复出现的意思压缩成一个中心句。",
+            steps: [
+              ["观察 · 找反复出现的内容", "留意哪些句子都在说明同一件事。"],
+              ["思考 · 合并相同信息", "删去例子里的重复部分，保留最重要的对象和特点。"],
+              ["表达 · 用自己的话概括", "试着用一句完整的话回答：这一段主要告诉我什么？"]
+            ],
+            question: "概括一段文字时，怎样避免把细节全部抄下来？",
+            options: ["找共同意思，用自己的话说重点", "把每个句子都照搬", "只抄第一个词", "只写一个标点"],
+            answer: 0, feedback: "概括不是照抄，而是把共同意思收拢成自己的话。"
+          },
+          {
+            title: "用线索检查理解", objective: "区分找到的信息与自己的猜测。",
+            steps: [
+              ["观察 · 标记证据", "找到支持答案的词句，轻轻画出关键词。"],
+              ["思考 · 分清事实和想法", "问问自己：这是文中写到的，还是我根据它想到的？"],
+              ["表达 · 说出依据", "回答时用“我从……看出……”把答案和线索连起来。"]
+            ],
+            question: "怎样说明自己的回答不是随便猜的？",
+            options: ["指出支持答案的文字线索", "说“我感觉就是这样”", "把问题再读一遍但不回答", "只写一个答案不看依据"],
+            answer: 0, feedback: "找到句子依据，读者就能跟着你的思路一起判断。"
+          }
+        ]
+      },
+      {
+        title: "把故事讲活", subtitle: "人物、变化与结果",
+        lessons: [
+          {
+            title: "故事先搭一条路", objective: "用起因、变化和结果整理讲述顺序。",
+            steps: [
+              ["观察 · 找到开端", "先说清楚谁遇到什么事，故事才有起点。"],
+              ["思考 · 追踪变化", "接下来发生了什么改变？哪一个选择让故事往前走？"],
+              ["表达 · 收住结尾", "把结果和人物的变化连起来，再用自己的话讲一遍。"]
+            ],
+            question: "转述故事时，怎样让听的人跟得上？",
+            options: ["按照事情发生的顺序讲清关键变化", "把结尾提前，再跳回开头", "只讲一个人物名字", "重复同一句话"],
+            answer: 0, feedback: "清楚的顺序能帮听众在脑中搭起故事路线。"
+          },
+          {
+            title: "人物为什么这样做", objective: "从动作、语言和选择中推想人物心情。",
+            steps: [
+              ["观察 · 看动作和说话", "人物做了什么、说了什么，都是理解心情的线索。"],
+              ["思考 · 联系当时情境", "把线索放回事情发生的环境里，再想人物为什么这样选择。"],
+              ["表达 · 讲出推想依据", "用“因为……所以我觉得……”说出你的理解和理由。"]
+            ],
+            question: "判断人物心情时，哪种做法比较有根据？",
+            options: ["结合人物动作和当时情境", "只猜人物的衣服颜色", "不看故事内容", "只看段落长度"],
+            answer: 0, feedback: "从具体动作和情境出发，你的推想就有线索支持。"
+          },
+          {
+            title: "换个声音来转述", objective: "保留故事要点，同时照顾听众和讲述角度。",
+            steps: [
+              ["观察 · 确认听众", "讲给同学听和讲给低年级伙伴听，可以选不同的说法。"],
+              ["思考 · 留下关键环节", "保留人物、难题和变化，不必把每一个小细节都塞进去。"],
+              ["表达 · 讲得自然", "试着用自己的语气转述，必要时补一句背景让听众听懂。"]
+            ],
+            question: "把故事讲给没读过的人听，开头最好先交代什么？",
+            options: ["人物和事情发生的基本情况", "所有人物的外貌细节", "自己的早餐内容", "故事的页数"],
+            answer: 0, feedback: "先补上必要背景，听众才能进入故事。"
+          }
+        ]
+      },
+      {
+        title: "语言里的家国情怀", subtitle: "感受情感，也学会表达",
+        lessons: [
+          {
+            title: "从词语读出情感", objective: "留意有力量的词语怎样影响一段表达。",
+            steps: [
+              ["观察 · 找有分量的词", "找出让你停下来想一想的词，看看它把什么情感带了出来。"],
+              ["思考 · 比较语气", "把这个词换成普通说法读一遍，感受语气和力量有什么不同。"],
+              ["表达 · 说出感受", "用自己的话解释：这个词让我感到什么，为什么？"]
+            ],
+            question: "读到有力量的词语，怎样更好地说明自己的感受？",
+            options: ["说出词语带来的语气变化和依据", "只说“很厉害”", "跳过这个词", "只统计它有几个笔画"],
+            answer: 0, feedback: "把词语和语气变化联系起来，感受就有了来处。"
+          },
+          {
+            title: "看见观点，也看见理由", objective: "分清表达的立场和支撑它的事实。",
+            steps: [
+              ["观察 · 找观点", "看一看说话的人最想表达什么想法。"],
+              ["思考 · 寻找理由", "再找一找他用什么经历、事实或例子来支持想法。"],
+              ["表达 · 有条理地回应", "先说明你是否赞同，再补上一条具体理由。"]
+            ],
+            question: "表达自己的观点时，哪种说法更容易让人理解？",
+            options: ["说清想法，并给出一条具体理由", "只说“我对”", "不断提高音量", "换一个完全无关的话题"],
+            answer: 0, feedback: "观点加理由，听的人才能明白你为什么这样想。"
+          },
+          {
+            title: "让句子更有节奏", objective: "用停顿和句式变化，让重要意思更清楚。",
+            steps: [
+              ["观察 · 听句子长短", "读出声来，听听哪里适合停顿，哪里需要一口气连起来。"],
+              ["思考 · 突出重点", "把最重要的意思放在清楚的位置，不要让长句把重点藏住。"],
+              ["表达 · 读给别人听", "调整语速和停顿，再听一遍是否更容易理解。"]
+            ],
+            question: "读一段重要的话，怎样让听众更容易听清重点？",
+            options: ["在意思完整处停顿并读准关键词", "从头到尾越快越好", "每个字都拖得很长", "把标点全部跳过"],
+            answer: 0, feedback: "合适的停顿会帮重要意思站出来。"
+          }
+        ]
+      },
+      {
+        title: "说明有方法", subtitle: "比较、分类、讲清楚",
+        lessons: [
+          {
+            title: "先说明最重要的特点", objective: "选准观察对象和特点，再安排说明顺序。",
+            steps: [
+              ["观察 · 选一个对象", "想清楚你要介绍什么，读者最想先知道哪件事。"],
+              ["思考 · 分类找特点", "可以按外形、用途或习性整理信息，但只选和主题有关的。"],
+              ["表达 · 由主到次", "先说最重要的特点，再补充一两个具体细节。"]
+            ],
+            question: "介绍一把雨伞，哪种顺序更清楚？",
+            options: ["先说主要用途，再介绍结构特点", "先写买伞时的天气，再跳到颜色", "不断重复它很好用", "把所有想到的事情混在一起"],
+            answer: 0, feedback: "按用途和结构整理，信息就更容易跟上。"
+          },
+          {
+            title: "用比较帮助理解", objective: "借熟悉的事物作比较，让陌生特点更容易想象。",
+            steps: [
+              ["观察 · 找陌生特点", "先挑出最难想象的地方，比如长度、速度或外形。"],
+              ["思考 · 找恰当参照", "选一个读者熟悉、而且能公平比较的事物。"],
+              ["表达 · 说明比较范围", "把比较对象和特点说完整，不让比喻替代准确说明。"]
+            ],
+            question: "用比较介绍物体大小时，最需要注意什么？",
+            options: ["参照物要熟悉，比较的特点要说清", "找越不相干的事物越好", "只保留夸张说法", "省略比较对象"],
+            answer: 0, feedback: "恰当的参照能帮读者建立清晰的大小印象。"
+          },
+          {
+            title: "把资料变成自己的说明", objective: "整理可靠信息，用自己的话重新组织。",
+            steps: [
+              ["观察 · 记录要点", "从资料里记下和主题有关的关键词，不急着整句照搬。"],
+              ["思考 · 核对信息", "比较不同线索，确认哪些内容准确、哪些需要删去。"],
+              ["表达 · 重组说明", "合上资料试着讲一遍，再打开检查有没有漏掉关键点。"]
+            ],
+            question: "整理资料写说明时，怎样体现自己的理解？",
+            options: ["记录关键词后用自己的话重新组织", "整段复制后不检查", "只改掉一个标点", "删除所有事实"],
+            answer: 0, feedback: "理解后重组信息，才能既准确又清楚。"
+          }
+        ]
+      },
+      {
+        title: "读懂亲情", subtitle: "从小事发现关心",
+        lessons: [
+          {
+            title: "日常动作里的爱", objective: "读出平常举动背后没有直接说出的关心。",
+            steps: [
+              ["观察 · 留意小动作", "有人做了什么？一个递来的物品、一句提醒都可能是线索。"],
+              ["思考 · 联系前后情境", "把动作放回当时的需要里，想想它为谁解决了什么。"],
+              ["表达 · 说出你的理解", "先描述动作，再说你从中感受到什么关心。"]
+            ],
+            question: "读一段家庭生活描写，怎样发现没有明说的关心？",
+            options: ["留意动作，并联系当时发生的事情", "只数人物出现几次", "跳过生活细节", "只看标题长度"],
+            answer: 0, feedback: "小动作和当时的情境连起来，情感就会慢慢显现。"
+          },
+          {
+            title: "把对话读出语气", objective: "从称呼、语气和回答中理解人物关系。",
+            steps: [
+              ["观察 · 听称呼和语气", "同样一句话，轻声提醒和着急催促，听起来并不一样。"],
+              ["思考 · 想想说话场景", "是谁对谁说？当时发生了什么？这些信息会影响语气。"],
+              ["表达 · 读出变化", "给不同人物试一试不同语气，再说说你的判断依据。"]
+            ],
+            question: "朗读一段亲人之间的对话，先留意什么？",
+            options: ["人物关系、当时情境和说话语气", "每个字的笔画数", "句子有几行", "纸张的颜色"],
+            answer: 0, feedback: "读懂人物关系和场景，语气就不只是猜测。"
+          },
+          {
+            title: "谢谢要说得具体", objective: "用一件真实小事表达感谢，而不是只说空泛的话。",
+            steps: [
+              ["观察 · 想起一件小事", "回想最近谁为你做了什么具体的事。"],
+              ["思考 · 找到它的帮助", "这件事怎样帮助了你？当时你的心情有什么变化？"],
+              ["表达 · 说清感谢", "用“谢谢你……，这让我……”把事情和感受连起来。"]
+            ],
+            question: "怎样让一句感谢听起来真诚、具体？",
+            options: ["说出对方做的事和它带来的帮助", "只说“谢谢你最好”", "照抄一句网络祝福", "把感谢说得越长越好"],
+            answer: 0, feedback: "具体的小事能让对方知道你真的看见了这份心意。"
+          }
+        ]
+      },
+      {
+        title: "发现自然", subtitle: "按顺序记录变化",
+        lessons: [
+          {
+            title: "把景物排进时间里", objective: "发现同一地点在不同时间的变化。",
+            steps: [
+              ["观察 · 选定地点", "站在同一个地方，留意早晨、午后或傍晚有什么变化。"],
+              ["思考 · 找到变化顺序", "把先发生的和后发生的排一排，找出最明显的不同。"],
+              ["表达 · 写出时间线", "用清楚的时间词串起观察，让读者跟着你一起看。"]
+            ],
+            question: "记录一天中景物的变化，最重要的是？",
+            options: ["写清时间顺序和每个时刻的变化", "只写自己最喜欢的颜色", "把不同时间混在一起", "省去观察地点"],
+            answer: 0, feedback: "清楚的时间线会让变化变得容易看见。"
+          },
+          {
+            title: "让感官一起工作", objective: "结合声音、气味、触感等线索补足画面。",
+            steps: [
+              ["观察 · 打开感官", "除了看见什么，也听听声音、闻闻气味，或感受风和温度。"],
+              ["思考 · 选有关的线索", "不要把所有感受都塞进一句话，挑最能说明场景的两三种。"],
+              ["表达 · 组合成画面", "把不同感官的细节放在合适的顺序里，让画面自然出现。"]
+            ],
+            question: "介绍一场小雨，哪组观察更丰富？",
+            options: ["雨点声、地面水纹和空气的清新气味", "只写“下雨了”", "只写伞的颜色", "只写雨停以后"],
+            answer: 0, feedback: "不同感官的线索互相补充，画面会更完整。"
+          },
+          {
+            title: "用方位词带路", objective: "让读者跟着清楚的空间顺序移动视线。",
+            steps: [
+              ["观察 · 确认观察位置", "先想想自己站在哪里，面前、身旁和远处分别有什么。"],
+              ["思考 · 决定介绍路线", "从近到远、从左到右都可以，选一条自己容易讲清的路线。"],
+              ["表达 · 用方位词连接", "用“旁边”“远处”“转过来”等词语带着读者一起看。"]
+            ],
+            question: "介绍教室布置，怎样避免东一句西一句？",
+            options: ["选定路线，用方位词按顺序介绍", "想到哪里写到哪里", "只说物品名称", "把地点全都省掉"],
+            answer: 0, feedback: "先选好路线，再沿着路线介绍，就不会迷路。"
+          }
+        ]
+      },
+      {
+        title: "阅读与表达", subtitle: "留下自己的读书发现",
+        lessons: [
+          {
+            title: "读书时和自己提问", objective: "边读边问，发现还没弄懂的地方。",
+            steps: [
+              ["观察 · 标出好奇处", "遇到新词、奇怪的做法或不明白的转折，先记下来。"],
+              ["思考 · 提一个小问题", "把好奇变成一个能查找或讨论的问题。"],
+              ["表达 · 带着问题再读", "回到相关段落找线索，看看问题有没有新的答案。"]
+            ],
+            question: "读到一处不明白的地方，接下来怎样做？",
+            options: ["把疑问记下来，再回到上下文找线索", "直接跳过整本书", "只看插图不读字", "马上抄下最后一句"],
+            answer: 0, feedback: "问题能带领你重新观察文字，常常会有新发现。"
+          },
+          {
+            title: "读书笔记写给未来的自己", objective: "记录重点和疑问，方便以后找回想法。",
+            steps: [
+              ["观察 · 选值得记的内容", "可以记一句启发、一个疑问，或一个想继续了解的主题。"],
+              ["思考 · 加上自己的想法", "除了记内容，也写一句你为什么留下它。"],
+              ["表达 · 标清来源和主题", "给笔记加上书名或主题标签，过几天还能找到。"]
+            ],
+            question: "哪种读书笔记以后最容易找回来？",
+            options: ["有主题、来源和自己的简短想法", "只写一串没有说明的页码", "整本书全部抄下来", "只留一个问号"],
+            answer: 0, feedback: "主题和来源能帮未来的你迅速想起这条笔记。"
+          },
+          {
+            title: "推荐一本真正喜欢的书", objective: "把书的特点和个人感受连起来，做有理由的推荐。",
+            steps: [
+              ["观察 · 找一本想推荐的书", "想想书里有什么情节、知识或人物一直留在你脑海里。"],
+              ["思考 · 选择合适的读者", "这本书适合谁？哪些特点会吸引这位读者？"],
+              ["表达 · 给出真实理由", "说一个具体亮点，再说为什么你觉得对方可能会喜欢。"]
+            ],
+            question: "推荐一本书，怎样让同学知道它适不适合自己？",
+            options: ["说出一个具体亮点和适合的读者", "只说“大家都应该看”", "把结局全部讲完", "只报出书的厚度"],
+            answer: 0, feedback: "具体亮点和读者对象能让推荐更有帮助。"
+          }
+        ]
+      }
+    ];
+
+    const dailyTasks = [
+      { id: "watch", title: "看完一节原创微课", detail: "约 8 分钟 · 可以从任意单元开始" },
+      { id: "practice", title: "完成一道小练习", detail: "选答案后点“检查我的想法”" },
+      { id: "retell", title: "用自己的话讲一遍", detail: "约 2 分钟 · 说给自己或家人听" }
+    ];
+    const storageKey = "language-workbench-progress-v1";
+    let activeUnit = 0;
+    let activeLesson = 0;
+    let activeStep = 0;
+    let selectedAnswer = null;
+    let playbackTimer = null;
+    let progress = { completedTasks: {}, completedLessons: {} };
+
+    const byId = (id) => document.getElementById(id);
+    const currentLesson = () => units[activeUnit].lessons[activeLesson];
+
+    function loadProgress() {
+      try {
+        const saved = localStorage.getItem(storageKey);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed && typeof parsed === "object") {
+            progress = {
+              completedTasks: parsed.completedTasks && typeof parsed.completedTasks === "object" ? parsed.completedTasks : {},
+              completedLessons: parsed.completedLessons && typeof parsed.completedLessons === "object" ? parsed.completedLessons : {}
+            };
+          }
+        }
+      } catch (error) {
+        byId("storageStatus").textContent = "浏览器暂时无法保存进度；本次打开期间仍可正常练习。";
+        byId("storageStatus").classList.add("error");
+      }
+    }
+
+    function saveProgress() {
+      try {
+        localStorage.setItem(storageKey, JSON.stringify(progress));
+        byId("storageStatus").textContent = "学习勾选只保存在这台设备的浏览器里。";
+        byId("storageStatus").classList.remove("error");
+      } catch (error) {
+        byId("storageStatus").textContent = "浏览器暂时无法保存进度；本次打开期间仍可正常练习。";
+        byId("storageStatus").classList.add("error");
+      }
+      renderProgressSummary();
+    }
+
+    function renderProgressSummary() {
+      const taskCount = Object.values(progress.completedTasks).filter(Boolean).length;
+      const lessonCount = Object.values(progress.completedLessons).filter(Boolean).length;
+      byId("progressSummary").textContent = `已完成 ${taskCount} 个任务 · ${lessonCount} 节微课`;
+    }
+
+    function renderUnits() {
+      const list = byId("unitList");
+      list.replaceChildren();
+      units.forEach((unit, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "unit-button";
+        button.setAttribute("aria-current", index === activeUnit ? "true" : "false");
+        button.setAttribute("aria-label", `单元${index + 1}：${unit.title}，${unit.subtitle}`);
+        button.innerHTML = `<span class="unit-number">${index + 1}</span><span><span class="unit-title">${unit.title}</span><span class="unit-subtitle">${unit.subtitle}</span></span>`;
+        button.addEventListener("click", () => {
+          stopPlayback();
+          activeUnit = index;
+          activeLesson = 0;
+          activeStep = 0;
+          renderAll();
+        });
+        list.append(button);
+      });
+    }
+
+    function renderLesson() {
+      const lesson = currentLesson();
+      const identity = `${activeUnit + 1}-${activeLesson + 1}`;
+      byId("unitMark").textContent = `单元${activeUnit + 1} · ${units[activeUnit].title}`;
+      byId("lessonCount").textContent = `微课 ${activeLesson + 1} / ${units[activeUnit].lessons.length}`;
+      byId("lessonTitle").textContent = lesson.title;
+      byId("lessonObjective").textContent = lesson.objective;
+      byId("stepTitle").textContent = lesson.steps[activeStep][0];
+      byId("stepIndex").textContent = `第 ${activeStep + 1} 步 / ${lesson.steps.length}`;
+      byId("lessonScript").textContent = lesson.steps[activeStep][1];
+      byId("machineArt").dataset.stage = String(activeStep);
+      byId("previousLesson").disabled = activeUnit === 0 && activeLesson === 0;
+      byId("nextLesson").disabled = activeUnit === units.length - 1 && activeLesson === units[activeUnit].lessons.length - 1;
+      byId("lessonStatus").textContent = progress.completedLessons[identity] ? "这节微课已完成 · 可以再看一遍" : "原创字幕微课 · 不含外部视频";
+      byId("lessonStatus").className = progress.completedLessons[identity] ? "lesson-status is-done" : "lesson-status";
+      byId("playLabel").textContent = "播放微课动画";
+      byId("playLesson").querySelector("[aria-hidden='true']").textContent = "▶";
+
+      const stageControls = byId("stageControls");
+      stageControls.replaceChildren();
+      lesson.steps.forEach((step, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "stage-button";
+        button.textContent = step[0].split(" · ")[0];
+        button.setAttribute("aria-pressed", index === activeStep ? "true" : "false");
+        button.addEventListener("click", () => {
+          activeStep = index;
+          renderLesson();
+        });
+        stageControls.append(button);
+      });
+      renderPractice();
+      renderProgressSummary();
+    }
+
+    function renderPractice() {
+      const lesson = currentLesson();
+      byId("practiceTitle").textContent = `现在试一试：${lesson.title}`;
+      byId("practiceIntro").textContent = lesson.question;
+      const list = byId("answerList");
+      const legend = list.querySelector("legend");
+      list.replaceChildren(legend);
+      selectedAnswer = null;
+      byId("answerFeedback").textContent = "";
+      byId("answerFeedback").className = "answer-feedback";
+      lesson.options.forEach((option, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "answer-option";
+        button.setAttribute("aria-pressed", "false");
+        button.innerHTML = `<span class="answer-letter">${String.fromCharCode(65 + index)}</span><span></span>`;
+        button.querySelector("span:last-child").textContent = option;
+        button.addEventListener("click", () => {
+          selectedAnswer = index;
+          list.querySelectorAll(".answer-option").forEach((item, itemIndex) => {
+            item.setAttribute("aria-pressed", itemIndex === index ? "true" : "false");
+          });
+          byId("answerFeedback").textContent = "";
+          byId("answerFeedback").className = "answer-feedback";
+        });
+        list.append(button);
+      });
+    }
+
+    function renderTasks() {
+      const list = byId("taskList");
+      list.replaceChildren();
+      const date = new Date();
+      byId("dailyDate").textContent = new Intl.DateTimeFormat("zh-CN", { month: "long", day: "numeric", weekday: "long" }).format(date);
+      dailyTasks.forEach((task) => {
+        const item = document.createElement("li");
+        item.className = "task-item";
+        const label = document.createElement("label");
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = Boolean(progress.completedTasks[task.id]);
+        checkbox.setAttribute("aria-label", task.title);
+        const copy = document.createElement("span");
+        copy.className = "task-copy";
+        copy.innerHTML = `${task.title}<small>${task.detail}</small>`;
+        label.append(checkbox, copy);
+        item.append(label);
+        if (checkbox.checked) item.classList.add("is-checked");
+        checkbox.addEventListener("change", () => {
+          progress.completedTasks[task.id] = checkbox.checked;
+          item.classList.toggle("is-checked", checkbox.checked);
+          saveProgress();
+        });
+        list.append(item);
+      });
+    }
+
+    function updateResearchNotice() {
+      const notice = byId("researchNotice");
+      const researchDate = new Date(2026, 10, 16, 23, 59, 59);
+      const today = new Date();
+      if (today > researchDate) {
+        notice.classList.add("is-ended");
+        byId("noticeTitle").textContent = "一次性调研提醒 · 已结束（2026年11月16日）";
+      }
+    }
+
+    function nextStep() {
+      const lesson = currentLesson();
+      if (activeStep < lesson.steps.length - 1) {
+        activeStep += 1;
+      } else {
+        activeStep = 0;
+        progress.completedLessons[`${activeUnit + 1}-${activeLesson + 1}`] = true;
+        saveProgress();
+      }
+      renderLesson();
+    }
+
+    function moveLesson(direction) {
+      stopPlayback();
+      activeLesson += direction;
+      if (activeLesson < 0 && activeUnit > 0) {
+        activeUnit -= 1;
+        activeLesson = units[activeUnit].lessons.length - 1;
+      } else if (activeLesson >= units[activeUnit].lessons.length && activeUnit < units.length - 1) {
+        activeUnit += 1;
+        activeLesson = 0;
+      }
+      activeStep = 0;
+      renderAll();
+    }
+
+    function stopPlayback() {
+      if (playbackTimer) {
+        window.clearInterval(playbackTimer);
+        playbackTimer = null;
+      }
+      if (byId("lessonStatus")) {
+        byId("lessonStatus").className = "lesson-status";
+        byId("lessonStatus").textContent = "原创字幕微课 · 不含外部视频";
+        byId("playLabel").textContent = "播放微课动画";
+        byId("playLesson").querySelector("[aria-hidden='true']").textContent = "▶";
+      }
+    }
+
+    function renderAll() {
+      renderUnits();
+      renderLesson();
+      renderTasks();
+    }
+
+    byId("playLesson").addEventListener("click", () => {
+      if (playbackTimer) {
+        stopPlayback();
+        return;
+      }
+      byId("playLabel").textContent = "暂停微课动画";
+      byId("playLesson").querySelector("[aria-hidden='true']").textContent = "Ⅱ";
+      byId("lessonStatus").textContent = "动画字幕正在逐步播放……";
+      byId("lessonStatus").className = "lesson-status is-playing";
+      playbackTimer = window.setInterval(() => {
+        if (activeStep < currentLesson().steps.length - 1) {
+          activeStep += 1;
+          renderLesson();
+          byId("playLabel").textContent = "暂停微课动画";
+          byId("playLesson").querySelector("[aria-hidden='true']").textContent = "Ⅱ";
+          byId("lessonStatus").textContent = "动画字幕正在逐步播放……";
+          byId("lessonStatus").className = "lesson-status is-playing";
+        } else {
+          stopPlayback();
+          progress.completedLessons[`${activeUnit + 1}-${activeLesson + 1}`] = true;
+          saveProgress();
+          byId("lessonStatus").textContent = "微课结束，试着完成下面的小任务吧。";
+          byId("lessonStatus").className = "lesson-status is-done";
+        }
+      }, 2400);
+    });
+
+    byId("nextStep").addEventListener("click", () => {
+      stopPlayback();
+      nextStep();
+    });
+    byId("previousLesson").addEventListener("click", () => moveLesson(-1));
+    byId("nextLesson").addEventListener("click", () => moveLesson(1));
+
+    byId("checkAnswer").addEventListener("click", () => {
+      const feedback = byId("answerFeedback");
+      if (selectedAnswer === null) {
+        feedback.textContent = "先选一个答案，再来检查吧。";
+        feedback.className = "answer-feedback retry";
+        return;
+      }
+      const lesson = currentLesson();
+      if (selectedAnswer === lesson.answer) {
+        feedback.textContent = `答对啦！${lesson.feedback}`;
+        feedback.className = "answer-feedback correct";
+        progress.completedTasks[`quiz-${activeUnit + 1}-${activeLesson + 1}`] = true;
+        saveProgress();
+      } else {
+        feedback.textContent = "再想一想：哪一个选择能让你的说法更具体、更有依据？";
+        feedback.className = "answer-feedback retry";
+      }
+    });
+
+    loadProgress();
+    updateResearchNotice();
+    renderAll();
+  </script>
+</body>
+</html>

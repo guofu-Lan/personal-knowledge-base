@@ -1,0 +1,285 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-13T10:49:25+08:00",
+  "title": "Design System: Grade 5 Chinese Learning Workbench",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Workshop Cobalt",
+        "canonical": "#2058D6",
+        "tonalRamp": ["hsl(221 73% 15%)", "hsl(221 73% 25%)", "hsl(221 73% 35%)", "hsl(221 73% 45%)", "hsl(221 73% 55%)", "hsl(221 73% 65%)", "hsl(221 73% 75%)", "hsl(221 73% 95%)"]
+      },
+      "primary-deep": {
+        "role": "primary",
+        "displayName": "Deep Workshop Blue",
+        "canonical": "#173D9D",
+        "tonalRamp": ["hsl(222 75% 15%)", "hsl(222 75% 25%)", "hsl(222 75% 35%)", "hsl(222 75% 45%)", "hsl(222 75% 55%)", "hsl(222 75% 65%)", "hsl(222 75% 75%)", "hsl(222 75% 95%)"]
+      },
+      "progress-blue": {
+        "role": "secondary",
+        "displayName": "Progress Blue",
+        "canonical": "#E4EDFF",
+        "tonalRamp": ["hsl(221 100% 15%)", "hsl(221 100% 25%)", "hsl(221 100% 35%)", "hsl(221 100% 45%)", "hsl(221 100% 55%)", "hsl(221 100% 65%)", "hsl(221 100% 75%)", "hsl(221 100% 95%)"]
+      },
+      "signal-red": {
+        "role": "secondary",
+        "displayName": "Signal Vermilion",
+        "canonical": "#C53B2C",
+        "tonalRamp": ["hsl(6 63% 15%)", "hsl(6 63% 25%)", "hsl(6 63% 35%)", "hsl(6 63% 45%)", "hsl(6 63% 55%)", "hsl(6 63% 65%)", "hsl(6 63% 75%)", "hsl(6 63% 95%)"]
+      },
+      "citrus-yellow": {
+        "role": "secondary",
+        "displayName": "Citrus Yellow",
+        "canonical": "#F5C544",
+        "tonalRamp": ["hsl(44 90% 15%)", "hsl(44 90% 25%)", "hsl(44 90% 35%)", "hsl(44 90% 45%)", "hsl(44 90% 55%)", "hsl(44 90% 65%)", "hsl(44 90% 75%)", "hsl(44 90% 95%)"]
+      },
+      "workshop-mint": {
+        "role": "tertiary",
+        "displayName": "Workshop Mint",
+        "canonical": "#178363",
+        "tonalRamp": ["hsl(162 70% 15%)", "hsl(162 70% 25%)", "hsl(162 70% 35%)", "hsl(162 70% 45%)", "hsl(162 70% 55%)", "hsl(162 70% 65%)", "hsl(162 70% 75%)", "hsl(162 70% 95%)"]
+      },
+      "notice-border": {
+        "role": "secondary",
+        "displayName": "Notice Amber",
+        "canonical": "#E1AA48",
+        "tonalRamp": ["hsl(39 71% 15%)", "hsl(39 71% 25%)", "hsl(39 71% 35%)", "hsl(39 71% 45%)", "hsl(39 71% 55%)", "hsl(39 71% 65%)", "hsl(39 71% 75%)", "hsl(39 71% 95%)"]
+      },
+      "notice-paper": {
+        "role": "secondary",
+        "displayName": "Notice Paper",
+        "canonical": "#FFF3D4",
+        "tonalRamp": ["hsl(43 100% 15%)", "hsl(43 100% 25%)", "hsl(43 100% 35%)", "hsl(43 100% 45%)", "hsl(43 100% 55%)", "hsl(43 100% 65%)", "hsl(43 100% 75%)", "hsl(43 100% 95%)"]
+      },
+      "notice-ink": {
+        "role": "neutral",
+        "displayName": "Notice Ink",
+        "canonical": "#4A3210",
+        "tonalRamp": ["hsl(39 64% 15%)", "hsl(39 64% 25%)", "hsl(39 64% 35%)", "hsl(39 64% 45%)", "hsl(39 64% 55%)", "hsl(39 64% 65%)", "hsl(39 64% 75%)", "hsl(39 64% 95%)"]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Cool Paper",
+        "canonical": "#F5F8FC",
+        "tonalRamp": ["hsl(214 35% 15%)", "hsl(214 35% 25%)", "hsl(214 35% 35%)", "hsl(214 35% 45%)", "hsl(214 35% 55%)", "hsl(214 35% 65%)", "hsl(214 35% 75%)", "hsl(214 35% 95%)"]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Clean Surface",
+        "canonical": "#FFFFFF",
+        "tonalRamp": ["hsl(220 8% 15%)", "hsl(220 8% 25%)", "hsl(220 8% 35%)", "hsl(220 8% 45%)", "hsl(220 8% 55%)", "hsl(220 8% 65%)", "hsl(220 8% 75%)", "hsl(220 8% 95%)"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink Navy",
+        "canonical": "#17243B",
+        "tonalRamp": ["hsl(219 45% 15%)", "hsl(219 45% 25%)", "hsl(219 45% 35%)", "hsl(219 45% 45%)", "hsl(219 45% 55%)", "hsl(219 45% 65%)", "hsl(219 45% 75%)", "hsl(219 45% 95%)"]
+      },
+      "muted-ink": {
+        "role": "neutral",
+        "displayName": "Muted Blue-Gray",
+        "canonical": "#52657E",
+        "tonalRamp": ["hsl(215 21% 15%)", "hsl(215 21% 25%)", "hsl(215 21% 35%)", "hsl(215 21% 45%)", "hsl(215 21% 55%)", "hsl(215 21% 65%)", "hsl(215 21% 75%)", "hsl(215 21% 95%)"]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Rule Blue-Gray",
+        "canonical": "#CBD6E3",
+        "tonalRamp": ["hsl(214 29% 15%)", "hsl(214 29% 25%)", "hsl(214 29% 35%)", "hsl(214 29% 45%)", "hsl(214 29% 55%)", "hsl(214 29% 65%)", "hsl(214 29% 75%)", "hsl(214 29% 95%)"]
+      },
+      "exhibit-blue": {
+        "role": "neutral",
+        "displayName": "Exhibit Blue",
+        "canonical": "#E6EFFC",
+        "tonalRamp": ["hsl(215 68% 15%)", "hsl(215 68% 25%)", "hsl(215 68% 35%)", "hsl(215 68% 45%)", "hsl(215 68% 55%)", "hsl(215 68% 65%)", "hsl(215 68% 75%)", "hsl(215 68% 95%)"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The large invitation that introduces the language machine."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Active lesson titles."
+      },
+      "title": {
+        "displayName": "Section title",
+        "purpose": "Unit, task, and section headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Original Chinese explanations and instructions."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Unit markers, step names, and status text."
+      },
+      "micro": {
+        "displayName": "Micro",
+        "purpose": "Compact secondary labels at narrow sizes."
+      },
+      "caption": {
+        "displayName": "Caption",
+        "purpose": "Small supporting descriptions."
+      },
+      "helper": {
+        "displayName": "Helper",
+        "purpose": "Short instructions and compact supporting copy."
+      },
+      "body-compact": {
+        "displayName": "Body compact",
+        "purpose": "Supporting lesson text."
+      },
+      "body-default": {
+        "displayName": "Body default",
+        "purpose": "Base browser-scale reading text."
+      },
+      "brand": {
+        "displayName": "Brand",
+        "purpose": "Compact product title in the masthead."
+      },
+      "section-mobile": {
+        "displayName": "Section mobile",
+        "purpose": "Narrow-screen section titles."
+      },
+      "section-compact": {
+        "displayName": "Section compact",
+        "purpose": "Compact section title."
+      },
+      "headline-mobile": {
+        "displayName": "Headline mobile",
+        "purpose": "Narrow-screen lesson headline."
+      },
+      "display-mobile": {
+        "displayName": "Display mobile",
+        "purpose": "Narrow-screen machine invitation."
+      }
+    },
+    "shadows": [
+      {
+        "name": "workbench-lift",
+        "value": "0 9px 22px rgb(23 36 59 / 12%)",
+        "purpose": "Lifts the complete interactive stage from the page."
+      }
+    ],
+    "motion": [
+      {
+        "name": "control-ease",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Moves the mechanical lever between lesson stages."
+      },
+      {
+        "name": "gear-turn",
+        "value": "18s linear infinite",
+        "purpose": "Turns the large illustrative gear at a calm pace."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "Minimizes automatic movement and transitions when requested."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "tablet",
+        "value": "980px"
+      },
+      {
+        "name": "mobile",
+        "value": "600px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "High-contrast action with a tactile pressed state.",
+      "html": "<button type=\"button\" class=\"ds-button-primary\">播放微课动画</button>",
+      "css": ".ds-button-primary{min-height:44px;padding:10px 15px;border:0;border-radius:12px;background:#2058D6;color:#fff;font:800 14px/1.35 'Segoe UI','Microsoft YaHei',sans-serif;box-shadow:0 4px 0 #173D9D;cursor:pointer;transition:transform 160ms ease,background 160ms ease}.ds-button-primary:hover{background:#173D9D;transform:translateY(-2px)}.ds-button-primary:focus-visible{outline:3px solid #173D9D;outline-offset:3px}.ds-button-primary:active{transform:translateY(2px);box-shadow:none}"
+    },
+    {
+      "name": "Secondary Action",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Outlined navigation and step action.",
+      "html": "<button type=\"button\" class=\"ds-button-secondary\">下一步 →</button>",
+      "css": ".ds-button-secondary{min-height:44px;padding:10px 15px;border:1px solid #CBD6E3;border-radius:12px;background:#fff;color:#17243B;font:700 14px/1.35 'Segoe UI','Microsoft YaHei',sans-serif;cursor:pointer;transition:background 160ms ease}.ds-button-secondary:hover{background:#F5F8FC}.ds-button-secondary:focus-visible{outline:3px solid #173D9D;outline-offset:3px}.ds-button-secondary:disabled{border-color:#CBD6E3;background:#F5F8FC;color:#52657E;cursor:not-allowed}"
+    },
+    {
+      "name": "Context Chip",
+      "kind": "chip",
+      "refersTo": "edition-chip",
+      "description": "Quietly identifies the local learning context and textbook route.",
+      "html": "<span class=\"ds-context-chip\">湖南学习情境 · 统编版（人教版）</span>",
+      "css": ".ds-context-chip{display:inline-flex;align-items:center;padding:7px 12px;border:1px solid #CBD6E3;border-radius:999px;background:#fff;color:#52657E;font:600 12px/1.35 'Segoe UI','Microsoft YaHei',sans-serif}"
+    },
+    {
+      "name": "Selected Unit",
+      "kind": "nav",
+      "refersTo": "unit-button-active",
+      "description": "A selected unit drawer in the ruled learning map.",
+      "html": "<button type=\"button\" aria-current=\"true\" class=\"ds-unit-active\"><span class=\"ds-unit-number\">1</span><span>留心细节</span></button>",
+      "css": ".ds-unit-active{display:flex;align-items:center;gap:11px;width:100%;min-height:84px;padding:14px 16px;border:0;background:#E4EDFF;color:#17243B;text-align:left;font:800 13px/1.4 'Segoe UI','Microsoft YaHei',sans-serif;cursor:pointer}.ds-unit-number{display:grid;width:34px;height:34px;place-items:center;border:1px solid #2058D6;border-radius:11px;background:#2058D6;color:#fff;font-weight:850}.ds-unit-active:focus-visible{outline:3px solid #173D9D;outline-offset:-3px}"
+    },
+    {
+      "name": "Lesson Stage Control",
+      "kind": "custom",
+      "refersTo": "stage-button",
+      "description": "Names the three hands-on steps and fills the active one.",
+      "html": "<button type=\"button\" aria-pressed=\"true\" class=\"ds-stage-button\">观察</button>",
+      "css": ".ds-stage-button{min-width:0;min-height:38px;padding:9px 8px;border:1px solid #CBD6E3;border-radius:11px;background:#fff;color:#173D9D;font:700 12px/1.35 'Segoe UI','Microsoft YaHei',sans-serif;cursor:pointer;transition:background 160ms ease,transform 160ms ease}.ds-stage-button:hover{transform:translateY(-2px);background:#F5F8FC}.ds-stage-button[aria-pressed=true]{border-color:#2058D6;background:#2058D6;color:#fff}.ds-stage-button:focus-visible{outline:3px solid #173D9D;outline-offset:3px}"
+    },
+    {
+      "name": "Daily Learning Task",
+      "kind": "input",
+      "refersTo": "daily-task",
+      "description": "A native checkbox that marks a short practice task complete.",
+      "html": "<label class=\"ds-daily-task\"><input type=\"checkbox\"><span>看完一节原创微课</span></label>",
+      "css": ".ds-daily-task{display:flex;align-items:center;gap:10px;padding:11px 0;border-top:1px solid #CBD6E3;color:#17243B;font:700 13px/1.5 'Segoe UI','Microsoft YaHei',sans-serif;cursor:pointer}.ds-daily-task input{width:19px;height:19px;margin:2px 0 0;accent-color:#2058D6}.ds-daily-task input:focus-visible{outline:3px solid #173D9D;outline-offset:2px}.ds-daily-task input:checked+span{color:#52657E;text-decoration:line-through}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Language Machine Workshop",
+    "overview": "This visual system makes learning feel like operating a friendly exhibit: a learner turns a lever, watches a small idea move through observation and thought, and tries a piece of language themselves. Rounded mechanical forms, enamel-like colors, and crisp work surfaces keep that process tangible without borrowing textbook artwork.\n\nThe interface stays bright and calm enough for reading in a home or classroom, while the cobalt machine, moving gears, and vermilion controls make interaction easy to spot. Chinese system-font fallbacks keep the lesson text dependable across common devices.",
+    "keyCharacteristics": [
+      "Language learning is shown as a visible, manipulable mechanism.",
+      "Cobalt carries primary actions; warm signal colors mark distinct activity parts.",
+      "Lesson text remains on clear, high-contrast surfaces.",
+      "Responsive layouts preserve the machine and move the lesson beneath it on narrow screens."
+    ],
+    "rules": [
+      {
+        "name": "The Enamel Signal Rule",
+        "body": "Use vivid red, yellow, and mint as deliberate mechanism cues, not as body-copy colors or blanket decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Read-It-First Rule",
+        "body": "Keep Chinese body text on a quiet, high-contrast surface; reserve saturated color for controls and the mechanical illustration.",
+        "section": "typography"
+      },
+      {
+        "name": "The One-Lift Rule",
+        "body": "Keep ordinary lesson, unit, practice, and daily-task surfaces flat; reserve the raised shadow for the principal workbench.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep Chinese explanations on uncluttered light surfaces and use concise, concrete examples.",
+      "Do make the current unit, micro-lesson, and learning stage easy to identify.",
+      "Do keep the Hunan school context separate from the unified textbook edition label.",
+      "Do label temporary school notices with their specific date and one-time status.",
+      "Do use original inline artwork and motion for lessons without verified video permissions."
+    ],
+    "donts": [
+      "Don't use textbook passages, third-party lesson plans, illustrations, or video in the sample.",
+      "Don't present the one-time November 16, 2026 research schedule as a recurring timetable.",
+      "Don't assign saturated accent colors to long Chinese paragraphs.",
+      "Don't add unrelated shadows or turn every content group into an individual card."
+    ]
+  }
+}
